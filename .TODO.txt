@@ -1,0 +1,7 @@
+template-tags.php
+>> ako posta e redaktiran, pokazhi koi go e redaktiral i koga
+>> da se zapazi originalniyat avtor i originalnata data na publikaciyata.
+>> potyrsi za mdlwp_posted_on()
+
+index.php
+>> pre_gets_posts ?

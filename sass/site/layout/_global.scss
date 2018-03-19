@@ -1,0 +1,12 @@
+.post-content {
+    width:60%;
+    float: left;
+}
+
+.hentry { 
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between;
+}
+
+.mdl-card__supporting-text { justify-content: space-between; } 
