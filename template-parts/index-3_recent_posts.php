@@ -35,7 +35,7 @@
 
 		<div class="mdl-card__media" style="<?php echo $color . $bg . $height; ?> ">
 			<header>
-				<?php //the_title( sprintf( '<h3><a style="%s" href="%s" rel="bookmark">', $title_color, esc_url( get_permalink() ) ), '</a></h3>' ); ?>
+				<?php the_title( sprintf( '<h3><a style="%s" href="%s" rel="bookmark">', $title_color, esc_url( get_permalink() ) ), '</a></h3>' ); ?>
 			</header><!-- .entry-header -->
 <?php 
 //Returns Array of Term Names for "my_taxonomy"
@@ -48,13 +48,16 @@ print_r($term_list[0]);
 		</div>
 
 		<div class="entry-content mdl-color-text--grey-600 mdl-card__supporting-text">
-			<?php
+			<?php /*
 				the_excerpt( sprintf(
-					/* translators: %s: Name of current post. */
 					wp_kses( __( 'Continue reading %s <span class="meta-nav">&rarr;</span>', 'mdlwp' ), array( 'span' => array( 'class' => array() ) ) ),
 					the_title( '<span class="screen-reader-text">"', '"</span>', false )
 				) );
+                         * 
+                         */
 			?>
+<?php $term_list = wp_get_post_terms($post->ID, 'band', array("fields" => "all"));
+print_r($term_list); ?>
 
 			<?php
 				wp_link_pages( array(

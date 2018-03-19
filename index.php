@@ -28,49 +28,59 @@ get_header(); ?>
                                 {   $show_posts_no=3; } else 
                                 {   $show_posts_no=9; }
                         ?>
-                    
-			<?php /* Start the Loop */ ?>
-                    
-                        <?php // Define custom query parameters */
-                        $custom_query_args = array(
-                            'category_name'             => 'prevod',
-                            'post_type'                 => 'post',
-                            'nopaging'                  => false,
-                            'posts_per_page'            => $show_posts_no,
-                            'ignore_sticky_posts'       => 1,
+
+                        <?php                    
+                        $a = array(
+                            "cat1" => prevod,
+                            "cat2" => novini,
                         );
 
-                        // Get current page and append to custom query parameters array
-                        $custom_query_args['paged'] = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
+                        foreach ($a as $k => $v) { ?>  
 
-                        // Instantiate custom query
-                        $custom_query = new WP_Query( $custom_query_args );
+                            <?php /* Start the Loop */ ?>
 
-                        // Pagination fix
-                        // wp_reset_query();
+                            <?php // Define custom query parameters */
+                            $custom_query_args = array(
+                                'category_name'             => $a[$k],
+                                'post_type'                 => 'post',
+                                'nopaging'                  => false,
+                                'posts_per_page'            => $show_posts_no,
+                                'ignore_sticky_posts'       => 1,
+                            );
 
-                        // Output custom query loop
-                        if ( $custom_query->have_posts() ) :
-                            while ( $custom_query->have_posts() ) :
-                                $custom_query->the_post();
+                            // Get current page and append to custom query parameters array
+                            $custom_query_args['paged'] = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1;
 
-					/*
-					 * Include the Post-Format-specific template for the content.
-					 * If you want to override this in a child theme, then include a file
-					 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-					 */
-					// get_template_part( 'template-parts/content', get_post_format() );
-                                        get_template_part( 'template-parts/index', '3_recent_posts' );
-				?>
+                            // Instantiate custom query
+                            $custom_query = new WP_Query( $custom_query_args );
 
-			<?php endwhile; ?>
-                        <?php endif;
+                            // Pagination fix
+                            // wp_reset_query();
+
+                            // Output custom query loop
+                            if ( $custom_query->have_posts() ) :
+                                while ( $custom_query->have_posts() ) :
+                                    $custom_query->the_post();
+
+                                            /*
+                                             * Include the Post-Format-specific template for the content.
+                                             * If you want to override this in a child theme, then include a file
+                                             * called content-___.php (where ___ is the Post Format name) and that will be used instead.
+                                             */
+                                            // get_template_part( 'template-parts/content', get_post_format() );
+                                            get_template_part( 'template-parts/index', '3_recent_posts' );
+                                    ?>
+
+                            <?php endwhile; ?>
+                            <?php endif;
+                        } //foreach category
+                        
                         // Reset postdata
                         wp_reset_postdata(); ?>
 
 			<?php do_action( 'mdlwp_before_pagination' ); ?>
 
-			<?php mdlwp_posts_navigation(); ?>
+			<?php // mdlwp_posts_navigation(); ?>
 
 			<?php do_action( 'mdlwp_after_pagination' ); ?>
 
