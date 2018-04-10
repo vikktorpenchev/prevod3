@@ -5,3 +5,6 @@ template-tags.php
 
 index.php
 >> pre_gets_posts ?
+
+
+DO NOT FORGET TO MOVE PLUGINS TO REMOTE SITE !

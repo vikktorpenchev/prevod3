@@ -1,15 +1,15 @@
 /*!
-Theme Name: prevod3 (Based on Material Design Lite WordPress Theme)
+Theme Name: prevod3
 Theme URI: https://github.com/braginteractive/MDLWP
 Author: Victor Penchev
-Author URI: http://braginteractive.com
-Description: 
-Version: 1.2.3
+Author URI: http://victorpenchev.com
+Description: (Based on Material Design Lite WordPress Theme
+Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: mdlwp
 GitHub Theme URI: https://github.com/braginteractive/MDLWP
-Tags:
+Tags: CSS, SCSS, CSSmin
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
@@ -21,7 +21,7 @@ Normalizing styles have been helped along thanks to the fine work of
 Nicolas Gallagher and Jonathan Neal http://necolas.github.com/normalize.css/
 */
 /*--------------------------------------------------------------
->>> TABLE OF CONTENTS:
+>>> TABLE OF CONTENTS: 
 ----------------------------------------------------------------
 # Typography
 # Navigation
@@ -186,6 +186,16 @@ textarea {
 /*--------------------------------------------------------------
 ## Posts and pages
 --------------------------------------------------------------*/
+.mdl-card__media header {
+	background-color: rgba(0, 0, 0, 0.1);
+	/* Safari */
+	transition: height 2s;
+}
+
+div.mdl-card__media:hover > header {
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
 .site-main {
 	padding-top: 40px;
 	-ms-word-wrap: break-word;
@@ -196,13 +206,13 @@ textarea {
 	margin-bottom: 35px;
 }
 
-.site-main header h3 {
+.site-main header h4 {
 	margin: 0;
-	color: #fff;
+	color: black;
 }
 
-.site-main header h3 a {
-	color: #fff;
+.site-main header h4 a {
+	color: black;
 	text-decoration: none;
 }
 
@@ -210,6 +220,9 @@ textarea {
 	box-sizing: border-box;
 	background-size: cover;
 	background-color: #757575;
+	filter: grayscale(100%);
+	-webkit-filter: grayscale(100%);
+	/* Safari 6.0 - 9.0 */
 	padding: 24px;
 	display: -webkit-box;
 	display: -ms-flexbox;
@@ -225,12 +238,20 @@ textarea {
 	    -ms-flex-align: end;
 	        align-items: flex-end;
 	cursor: pointer;
-	height: 280px;
+	height: 140px;
+	background-position: 0% 0%;
+	transition: all 0.3s ease;
+}
+
+.site-main .mdl-card__media:hover {
+	background-color: orange;
+	filter: grayscale(0%);
+	-webkit-filter: grayscale(0%);
+	/* Safari 6.0 - 9.0 */
 }
 
 .site-main .meta {
 	box-sizing: border-box;
-	padding: 16px;
 	display: -webkit-box;
 	display: -ms-flexbox;
 	display: flex;
@@ -263,6 +284,14 @@ textarea {
 }
 
 .site-main .meta .avatar-img img {
+	border-radius: 50%;
+}
+
+.site-main .meta .band-avatar-img {
+	margin-right: 15px;
+}
+
+.site-main .meta .band-avatar-img img {
 	border-radius: 50%;
 }
 
@@ -521,5 +550,3 @@ object {
 .gallery-caption {
 	display: block;
 }
-
-/*# sourceMappingURL=../prevod3/sass/maps/style.css.map */

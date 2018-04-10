@@ -39,7 +39,10 @@ function mdlwp_setup() {
 	 * @link http://codex.wordpress.org/Function_Reference/add_theme_support#Post_Thumbnails
 	 */
 	add_theme_support( 'post-thumbnails' );
-
+                // add_image_size( 'vp-full-bleed', 2000, 1200, true );
+                // add_image_size( 'vp-index-img', 1000, 450, true );
+                add_image_size( 'band-logo', 64, 64, true );
+                
 	// This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
 		'primary' => esc_html__( 'Primary Menu', 'mdlwp' ),
@@ -197,5 +200,6 @@ require get_template_directory() . '/inc/jetpack.php';
 
 /**
  * Register taxonomies.
+ * Commented out because functuanality was moved to a plugin
  */
-require get_template_directory() . '/inc/taxonomies.php';
+// require get_template_directory() . '/inc/taxonomies.php';

@@ -1,0 +1,7 @@
+<?php
+/*
+ ** this code shows current post band term 
+ */
+	$terms = get_the_terms( $post->ID , 'band' );
+	foreach ( $terms as $term ) { echo $term->name; }
+?>
